@@ -1,0 +1,66 @@
+.sidebar {
+  width: 60px; /* icon-only width */
+  height: 100vh;
+  background: #1f2937;
+  color: white;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* EXPAND ON HOVER */
+.sidebar:hover {
+  width: 220px;
+  border-radius: 15px;
+}
+
+/* LOGO */
+.logo {
+  text-align: center;
+  padding: 20px 0;
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* MENU */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+/* ICON */
+.icon {
+  font-size: 20px;
+  min-width: 20px;
+}
+
+/* TEXT HIDDEN BY DEFAULT */
+.text {
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+/* SHOW TEXT ONLY ON HOVER */
+.sidebar:hover .text {
+  opacity: 1;
+}
+
+/* LINK HOVER EFFECT */
+.sidebar a:hover {
+  background: #374151;
+}

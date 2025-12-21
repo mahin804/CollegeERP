@@ -5,14 +5,18 @@ import './App.css'
 import Homer from './components/Homer'
 import DashBoard from './components/DashBoard'
 import { Route, Routes } from 'react-router-dom'
+import Layout from "./components/Layout";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <Routes>
-      <Route path='/' element={<Homer />}/>
-      <Route path='/DashBoard' element={<DashBoard />} />
+      <Route path="/" element={<Homer />} />
+
+      <Route element={<Layout />}>
+        <Route path="/dashboard" element={<DashBoard />} />
+      </Route>
     </Routes>
   )
 }
