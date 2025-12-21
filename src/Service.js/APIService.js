@@ -1,5 +1,5 @@
 import axios from "axios"
-// const BaseURl = "https://localhost:32769"
+//const BaseURl = "https://localhost:7288"
 const BaseURl = "https://collegeerpapirepo-1.onrender.com"
 
 export const LoginPostApi = async (BodyData) => {

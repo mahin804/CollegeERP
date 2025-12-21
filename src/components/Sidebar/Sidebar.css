@@ -1,17 +1,21 @@
 .sidebar {
-  width: 60px; /* icon-only width */
-  height: 100vh;
+  width: 60px;
+  height: calc(100vh - 60px); /* subtract topbar height */
   background: #1f2937;
   color: white;
-  transition: all 0.3s ease;
+
+  position: fixed;
+  top: 60px; /* SAME as topbar height */
+  left: 0;
+
+  transition: width 0.3s ease;
   overflow: hidden;
-  border-radius: 0;
 }
 
 /* EXPAND ON HOVER */
 .sidebar:hover {
   width: 220px;
-  border-radius: 15px;
+  border-radius: 0; /* IMPORTANT */
 }
 
 /* LOGO */
@@ -21,7 +25,28 @@
   font-size: 18px;
   white-space: nowrap;
 }
+.sidebar-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  margin-bottom: 30px;
+}
 
+
+.user-icon {
+  font-size: 70px;
+  color: #9ca3af;
+}
+
+.user-name {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .user-name {
+  opacity: 1;
+}
 /* MENU */
 .sidebar ul {
   list-style: none;

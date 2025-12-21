@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import { FaChartBar, FaHome } from "react-icons/fa";
+import { FaChartBar, FaHome, FaUserCircle } from "react-icons/fa";
 import "./Sidebar.css";
 
 function Sidebar() {
   return (
     <div className="sidebar">
-      <h2 className="logo">My App</h2>
+      <div className="sidebar-user">
+        <FaUserCircle className="user-icon" />
+        <p className="user-name">John Doe</p>
+      </div>
 
       <ul>
         <li>

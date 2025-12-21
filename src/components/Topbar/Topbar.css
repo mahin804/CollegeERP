@@ -1,0 +1,49 @@
+.topbar {
+  height: 60px;
+  width: 98%;
+  background-color: #1f2937;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Left title */
+.topbar-left h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Right section */
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* space between Admin and Logout */
+}
+
+/* Admin text */
+.admin-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Logout button */
+.logout-btn {
+  background-color: #ef4444;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+}
