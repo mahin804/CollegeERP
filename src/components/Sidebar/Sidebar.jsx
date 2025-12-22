@@ -5,11 +5,7 @@ import "./Sidebar.css";
 function Sidebar() {
   return (
     <div className="sidebar">
-      <div className="sidebar-user">
-        <FaUserCircle className="user-icon" />
-        <p className="user-name">John Doe</p>
-      </div>
-
+    
       <ul>
         <li>
           <Link to="/">

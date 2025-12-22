@@ -2,27 +2,31 @@ import "./Topbar.css";
 import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
-
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // clear login data (if stored)
-    localStorage.clear(); // or remove specific key
-
-    // redirect to home / login page
+    localStorage.clear();
     navigate("/", { replace: true });
   };
 
   return (
     <div className="topbar">
-      {/* Left */}
+      {/* LEFT */}
       <div className="topbar-left">
         <h3>DemoReact</h3>
       </div>
 
-      {/* Right */}
+      {/* RIGHT */}
       <div className="topbar-right">
-        <span className="admin-name">Admin</span>
+        <div className="profile-box">
+          <img
+            src="https://i.pravatar.cc/100"
+            alt="Profile"
+            className="profile-img"
+          />
+          <span className="admin-name">Admin</span>
+        </div>
+
         <button className="logout-btn" onClick={handleLogout}>
           Logout
         </button>
