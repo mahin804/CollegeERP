@@ -5,7 +5,7 @@
   color: white;
 
   position: fixed;
-  top: 60px; /* SAME as topbar height */
+  top: 50px; /* SAME as topbar height */
   left: 0;
 
   transition: width 0.3s ease;
@@ -50,7 +50,7 @@
 /* MENU */
 .sidebar ul {
   list-style: none;
-  padding: 0;
+  padding: 17px;
 }
 
 .sidebar li {

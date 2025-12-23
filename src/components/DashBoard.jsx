@@ -1,67 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { GetDashboardCountsApi } from "../Service.js/APIService";
 import "./Dashboard.css";
 
-function Dashboard() {
-  const navigate = useNavigate();
-
-  const [counts, setCounts] = useState({
-    totalCourses: 0,
-    totalBatches: 0,
-    totalStudents: 0,
-    totalStaff: 0,
-  });
-
-  useEffect(() => {
-    loadDashboard();
-  }, []);
-
-  const loadDashboard = async () => {
-    try {
-      const response = await GetDashboardCountsApi();
-      console.log("Dashboard Data:", response.data);
-      setCounts(response.data);
-    } catch (error) {
-      console.log("API Error:", error);
-    }
-  };
-
-  // Redirect functions
-  const goToCourses = () => navigate("/Dashboard");
-  const goToBatches = () => navigate("/Dashboard");
-  const goToStudents = () => navigate("/Dashboard");
-  const goToStaff = () => navigate("/Dashboard");
-
+const Dashboard = () => {
   const cards = [
-    { title: "Total Courses", value: counts.totalCourses, color: "#4e73df", onClick: goToCourses },
-    { title: "Total Batches", value: counts.totalBatches, color: "#1cc88a", onClick: goToBatches },
-    { title: "Total Students", value: counts.totalStudents, color: "#36b9cc", onClick: goToStudents },
-    { title: "Total Staff", value: counts.totalStaff, color: "#f6c23e", onClick: goToStaff },
+    { title: "Students", value: 1138, color: "pink", icon: "👤" },
+    { title: "Employees", value: 74, color: "green", icon: "🧑‍💼" },
+    { title: "Courses", value: 12, color: "purple", icon: "📚" },
+    { title: "Sections", value: 33, color: "orange", icon: "☀️" },
   ];
 
   return (
-    <div className="dashboard-container">
-      <h2 className="dashboard-title">Dashboard</h2>
+    <div className="dashboard-content">
+      <h2 className="dashboard-heading">Dashboard</h2>
 
-      <div className="card-row">
-        {cards.map((item, index) => (
-          <div
-            key={index}
-            className="dashboard-card"
-            style={{ backgroundColor: item.color, cursor: "pointer" }}
-            onClick={item.onClick}
-          >
-            <h3 className="card-title">{item.title}</h3>
-            <p className="card-value">{item.value}</p>
-
-            {/* Button inside card */}
-            <button className="view-btn">View List</button>
+      <div className="summary-cards">
+        {cards.map((card, i) => (
+          <div key={i} className={`summary-card ${card.color}`}>
+            <div>
+              <h3>{card.value}</h3>
+              <p>{card.title}</p>
+            </div>
+            <span className="icon">{card.icon}</span>
           </div>
         ))}
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;

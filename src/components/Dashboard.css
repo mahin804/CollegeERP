@@ -1,84 +1,63 @@
-.dashboard-container {
-  /* padding: 20px; */
-  /* background-color: #f8f9fc; */
-  /* min-height: 100vh; */
-  font-family: Arial, sans-serif;
+/* MAIN DASHBOARD CONTAINER */
+.dashboard-wrapper {
+  max-width: 1200px;      /* like AI-EDU */
+  width: 100%;
 }
 
-.dashboard-title {
-  font-size: 28px;
-  font-weight: bold;
+/* HEADING */
+.dashboard-heading {
+  font-size: 26px;
+  font-weight: 600;
   margin-bottom: 20px;
+  color: #111827;
 }
 
-/* Row for cards */
-.card-row {
-  display: flex;
+/* CARD GRID */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-/* Card style */
-.dashboard-card {
-  flex: 1;
-  padding: 25px;
-  border-radius: 10px;
-  color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.dashboard-card h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.dashboard-card p {
-  font-size: 32px;
-  font-weight: bold;
-}
-.sidebar {
-  width: 220px;
-  height: 100vh;
-  background-color: #1f2937;
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 20px;
-}
-
-.logo {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.menu {
-  list-style: none;
-  padding: 0;
-}
-
-.menu li {
-  margin: 15px 0;
-}
-
-.menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-.menu a:hover {
-  color: #60a5fa;
-}
-.layout {
+/* CARD */
+.summary-card {
   display: flex;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px;
+  border-radius: 8px;
+  color: white;
+  min-height: 110px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Main content area */
-.content {
-  flex: 1;
-  padding: 20px;
-  background-color: #f3f4f6;
-  min-height: calc(100vh - 60px);
+.summary-card h3 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.summary-card p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.icon {
+  font-size: 40px;
+}
+
+/* COLORS */
+.pink {
+  background: #f06292;
+}
+
+.green {
+  background: #4db6ac;
+}
+
+.purple {
+  background: #9575cd;
+}
+
+.orange {
+  background: #ff8a65;
 }
