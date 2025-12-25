@@ -1,32 +1,38 @@
 /* MAIN DASHBOARD CONTAINER */
 .dashboard-wrapper {
-  max-width: 1200px;      /* like AI-EDU */
   width: 100%;
+  /* padding: 20px; */
+  padding-left: 2rem;
+  box-sizing: border-box;
 }
 
 /* HEADING */
 .dashboard-heading {
   font-size: 26px;
   font-weight: 600;
+  display: flex;
+  justify-content: start;
   margin-bottom: 20px;
+  background-color: cadetblue;
+  padding-left: 2rem;
   color: #111827;
 }
 
-/* CARD GRID */
 .summary-cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 20px;
+  width: 100%;
+  padding-left: 2rem;
 }
 
-/* CARD */
 .summary-card {
+  flex: 1; /* makes all cards equal width */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 22px;
   border-radius: 8px;
-  color: white;
+  color: #fff;
   min-height: 110px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -39,25 +45,9 @@
 .summary-card p {
   font-size: 15px;
   margin: 0;
+  opacity: 0.9;
 }
 
 .icon {
   font-size: 40px;
-}
-
-/* COLORS */
-.pink {
-  background: #f06292;
-}
-
-.green {
-  background: #4db6ac;
-}
-
-.purple {
-  background: #9575cd;
-}
-
-.orange {
-  background: #ff8a65;
 }

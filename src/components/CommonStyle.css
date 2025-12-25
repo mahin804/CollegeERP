@@ -1,0 +1,93 @@
+.page-wrapper {
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+.page-title {
+  font-weight: 600;
+  border-bottom: 2px solid #f4b400;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+}
+
+.form-box {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.form-row input,
+.form-row select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.btn-row {
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.submit {
+  background: #111;
+  color: #fff;
+}
+
+.clear {
+  background: #444;
+  color: #fff;
+}
+
+/* TABLE */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.data-table th {
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.data-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.data-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.edit-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}

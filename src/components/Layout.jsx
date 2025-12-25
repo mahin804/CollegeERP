@@ -15,7 +15,7 @@ function Layout() {
 
         {/* Main Content */}
         <div className="content">
-          <Outlet /> {/* Pages will load here */}
+            <Outlet /> {/* Pages will load here */}
         </div>
       </div>
     </>

@@ -14,12 +14,12 @@ function Sidebar() {
           </Link>
         </li>
 
-        <li>
-          <Link to="/dashboard">
-            <FaChartBar className="icon" />
-            <span className="text">Dashboard</span>
-          </Link>
-        </li>
+      <li>
+        <Link to="/Course/Course">
+          <FaChartBar className="icon" />
+          <span className="text">Course</span>
+        </Link>
+      </li>
       </ul>
     </div>
   );

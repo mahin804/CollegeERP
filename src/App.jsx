@@ -6,6 +6,7 @@ import Homer from './components/Homer'
 import DashBoard from './components/DashBoard'
 import { Route, Routes } from 'react-router-dom'
 import Layout from "./components/Layout";
+import Course from './components/Course/Course'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,9 @@ function App() {
 
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/Course/Course" element={<Course />} />
       </Route>
+     
     </Routes>
   )
 }
