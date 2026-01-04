@@ -1,53 +1,134 @@
-/* MAIN DASHBOARD CONTAINER */
+/* ================================================= */
+/* DASHBOARD WRAPPER */
+/* ================================================= */
 .dashboard-wrapper {
   width: 100%;
-  /* padding: 20px; */
-  padding-left: 2rem;
-  box-sizing: border-box;
+  padding: 20px;
+  background-color: #f4f6f9;
+ 
+
+  min-height: 100%;
 }
 
-/* HEADING */
+/* ================================================= */
+/* DASHBOARD CONTAINER */
+/* ================================================= */
+.dashboard-container {
+  width: 100%; /* FULL WIDTH */
+}
+
+/* ================================================= */
+/* DASHBOARD HEADING */
+/* ================================================= */
 .dashboard-heading {
   font-size: 26px;
   font-weight: 600;
-  display: flex;
-  justify-content: start;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  padding: 14px 20px;
   background-color: cadetblue;
-  padding-left: 2rem;
   color: #111827;
+  border-radius: 8px;
 }
 
+/* ================================================= */
+/* SUMMARY CARDS */
+/* ================================================= */
 .summary-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
   gap: 20px;
-  width: 100%;
-  padding-left: 2rem;
 }
 
+/* ================================================= */
+/* SUMMARY CARD */
+/* ================================================= */
 .summary-card {
-  flex: 1; /* makes all cards equal width */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 22px;
-  border-radius: 8px;
-  color: #fff;
-  min-height: 110px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  padding: 24px;
+  min-height: 120px;
+  border-radius: 14px;
+  color: #ffffff;
+  cursor: pointer;
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.summary-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================================= */
+/* CARD TEXT */
+/* ================================================= */
 .summary-card h3 {
-  font-size: 32px;
+  font-size: 34px;
+  font-weight: 700;
   margin: 0;
 }
 
-.summary-card p {
-  font-size: 15px;
-  margin: 0;
+.summary-card button {
+  margin-top: 10px;
+}
+
+/* ================================================= */
+/* ICON */
+/* ================================================= */
+.summary-card .icon {
+  font-size: 42px;
   opacity: 0.9;
 }
 
-.icon {
-  font-size: 40px;
+/* ================================================= */
+/* TABLET */
+/* ================================================= */
+@media (max-width: 1200px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-heading {
+    font-size: 22px;
+    text-align: center;
+  }
+
+  .summary-card {
+    padding: 20px;
+  }
+
+  .summary-card h3 {
+    font-size: 26px;
+  }
+}
+
+/* ================================================= */
+/* MOBILE */
+/* ================================================= */
+@media (max-width: 480px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-heading {
+    font-size: 20px;
+  }
+
+  .summary-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .summary-card h3 {
+    font-size: 24px;
+  }
+
+  .summary-card .icon {
+    font-size: 34px;
+  }
 }
