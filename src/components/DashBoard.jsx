@@ -20,8 +20,6 @@ const Dashboard = () => {
     <div className="dashboard-wrapper">
       <div className="dashboard-container">
         
-        <h2 className="dashboard-heading">Dashboard</h2>
-
         <div className="summary-cards">
           {cards.map((card, index) => (
             <div

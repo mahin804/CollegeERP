@@ -8,7 +8,9 @@ function Layout() {
     <>
       {/* Top Navigation Bar */}
       <Topbar />
-
+      <div style={{height:"8rem",backgroundColor:"green",display:"flex",justifyContent:"start",alignItems:"end"}}>
+        <h1 style={{color:"black",paddingLeft:"5rem",paddingBottom:".5rem"}}>DashBoard</h1>
+      </div>
       <div className="layout">
         {/* Left Sidebar */}
         <Sidebar />
