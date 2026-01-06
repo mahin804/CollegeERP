@@ -1,5 +1,5 @@
 import axios from "axios"
-//const BaseURl = "https://localhost:7288"
+//const BaseURl = "https://localhost:52386"
 const BaseURl = "https://collegeerpapirepo-1.onrender.com"
 
 export const LoginPostApi = async (BodyData) => {
@@ -7,4 +7,7 @@ export const LoginPostApi = async (BodyData) => {
 }
 export const GetDashboardCountsApi = async () => {
     return await axios.get(`${BaseURl}/api/StudentRegister/GetCounts`);
+};
+export const saveCollegeInfo = async (collegeData) => {
+  return await axios.post(`${BaseURl}/api/CollegeInfo`, collegeData);
 };

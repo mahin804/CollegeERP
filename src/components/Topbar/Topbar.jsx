@@ -1,7 +1,7 @@
 import "./Topbar.css";
 import { useNavigate } from "react-router-dom";
 
-const Topbar = () => {
+const Topbar = ({ onSettingsClick }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -10,7 +10,7 @@ const Topbar = () => {
   };
 
   return (
-    <div className="topbar">
+    <div style={{zIndex:100}} className="topbar">
       {/* LEFT */}
       <div className="topbar-left">
         <h3>DemoReact</h3>
@@ -18,6 +18,14 @@ const Topbar = () => {
 
       {/* RIGHT */}
       <div className="topbar-right">
+        <button
+          className="settings-btn"
+          onClick={onSettingsClick}
+          title="Settings"
+        >
+          ⚙️
+        </button>
+
         <div className="profile-box">
           <img
             src="https://i.pravatar.cc/100"
