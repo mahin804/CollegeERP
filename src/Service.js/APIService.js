@@ -11,3 +11,6 @@ export const GetDashboardCountsApi = async () => {
 export const saveCollegeInfo = async (collegeData) => {
   return await axios.post(`${BaseURl}/api/CollegeInfo`, collegeData);
 };
+export const GetCollegeInfo = async () => {
+  return await axios.get(`${BaseURl}/api/CollegeInfo`)
+}
