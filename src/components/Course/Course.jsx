@@ -165,19 +165,10 @@ const Courses = () => {
         onClick={resetForm}>
         {"Cancel"}
       </button>
+
       <button className="btn btn-success">
         {isEdit ? "Update" : "Save"}
       </button>
-
-      {isEdit && (
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={resetForm}
-        >
-          Cancel
-        </button>
-      )}
     </div>
   </form>
 </div>
