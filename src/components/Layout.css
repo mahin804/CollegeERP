@@ -38,6 +38,7 @@
   background-color: #f4f6f9;
   min-height: calc(100vh - 60px); /* fill height minus topbar */
   transition: margin-left 0.3s ease;
+  margin-top: -58px;
 }
 
 /* Adjust content margin when sidebar expands */

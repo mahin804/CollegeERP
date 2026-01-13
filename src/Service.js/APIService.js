@@ -14,3 +14,9 @@ export const saveCollegeInfo = async (collegeData) => {
 export const GetCollegeInfo = async () => {
   return await axios.get(`${BaseURl}/api/CollegeInfo`)
 }
+export const SaveCourse = async (CourseData) => {
+  return await axios.post(`${BaseURl}/api/Coures`, CourseData)
+}
+export const GetCourses = async () => {
+  return await axios.get(`${BaseURl}/api/Coures`);
+};

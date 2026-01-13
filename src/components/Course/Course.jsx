@@ -1,134 +1,232 @@
-import { useState } from "react";
-import "../CommonStyle.css";
+import { useEffect, useState } from "react";
+import { SaveCourse, GetCourses } from "../../Service.js/APIService";
 
-const CourseSession = () => {
-  const [formData, setFormData] = useState({
-    college: "",
-    course: "",
-    session: "",
-  });
+const initialState = {
+  courseId: 0,
+  courseCode: "",
+  courseName: "",
+  description: "",
+  credits: "",        // string for controlled input
+  departmentId: "",   // string
+  semester: "",       // string
+  createdBy: "admin"
+};
 
-  const [rows, setRows] = useState([
-    { id: 1, college: "mttc college", course: "B.Ed", session: "2021" },
-    { id: 2, college: "mttc college", course: "D.El.Ed", session: "2021" },
-    { id: 3, college: "AN College", course: "MBA", session: "2022" },
-    { id: 4, college: "BS College", course: "BSC", session: "2023" },
-  ]);
+const Courses = () => {
+  const [course, setCourse] = useState(initialState);
+  const [courseList, setCourseList] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
 
+  useEffect(() => {
+    loadCourses();
+  }, []);
+
+  // Load all courses safely
+  const loadCourses = async () => {
+  try {
+    const res = await GetCourses();
+
+    // courses are inside res.data.data
+    const data = Array.isArray(res.data.data) ? res.data.data : [];
+    setCourseList(data);
+  } catch (err) {
+    console.error("Error loading courses:", err);
+    setCourseList([]);
+  }
+};
+
+  // Handle input changes
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setCourse({ ...course, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submit
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newRow = {
-      id: rows.length + 1,
-      ...formData,
+    // Convert string inputs back to numbers before sending
+    const payload = {
+      ...course,
+      credits: Number(course.credits),
+      departmentId: Number(course.departmentId),
+      semester: Number(course.semester)
     };
 
-    setRows([...rows, newRow]);
-    setFormData({ college: "", course: "", session: "" });
+    try {
+      await SaveCourse(payload);
+      loadCourses();
+      resetForm();
+    } catch (err) {
+      console.error("Error saving course:", err);
+    }
   };
 
-  const handleEdit = (row) => {
-    setFormData(row);
+  // Edit button clicked
+  const handleEdit = (data) => {
+    setCourse({
+      courseId: data.courseId ?? 0,
+      courseCode: data.courseCode ?? "",
+      courseName: data.courseName ?? "",
+      description: data.description ?? "",
+      credits: data.credits?.toString() ?? "",
+      departmentId: data.departmentId?.toString() ?? "",
+      semester: data.semester?.toString() ?? "",
+      createdBy: data.createdBy ?? "admin"
+    });
+    setIsEdit(true);
+  };
+
+  // Reset form to initial state
+  const resetForm = () => {
+    setCourse(initialState);
+    setIsEdit(false);
   };
 
   return (
-    <div className="page-wrapper">
-      <h3 className="page-title">Course</h3>
+    <div className="dashboard-content">
 
-      {/* FORM */}
-      <form className="form-box" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <div>
-            <label>College name</label>
-            <select
-              name="college"
-              value={formData.college}
-              onChange={handleChange}
-            >
-              <option value="">--Select College--</option>
-              <option value="mttc college">MTTC College</option>
-              <option value="AN College">AN College</option>
-              <option value="BS College">BS College</option>
-            </select>
-          </div>
+      {/* ================= FORM CARD ================= */}
+      <div className="card p-3 mb-4">
+  <form onSubmit={handleSubmit}>
+    <div className="row">
+      <div className="col-md-3">
+        <input
+          className="form-control"
+          placeholder="Course Code"
+          name="courseCode"
+          value={course.courseCode}
+          onChange={handleChange}
+          required
+        />
+      </div>
 
-          <div>
-            <label>Course name</label>
-            <select
-              name="course"
-              value={formData.course}
-              onChange={handleChange}
-            >
-              <option value="">--Select Course--</option>
-              <option value="B.Ed">B.Ed</option>
-              <option value="D.El.Ed">D.El.Ed</option>
-              <option value="MBA">MBA</option>
-              <option value="BSC">BSC</option>
-            </select>
-          </div>
+      <div className="col-md-3">
+        <input
+          className="form-control"
+          placeholder="Course Name"
+          name="courseName"
+          value={course.courseName}
+          onChange={handleChange}
+          required
+        />
+      </div>
 
-          <div>
-            <label>Session</label>
-            <input
-              type="text"
-              name="session"
-              placeholder="Enter Session"
-              value={formData.session}
-              onChange={handleChange}
-            />
-          </div>
-        </div>
+      <div className="col-md-3">
+        <input
+          className="form-control"
+          placeholder="Credits"
+          type="number"
+          name="credits"
+          value={course.credits}
+          onChange={handleChange}
+        />
+      </div>
 
-        <div className="btn-row">
-          <button type="submit" className="btn submit">SUBMIT</button>
-          <button
-            type="button"
-            className="btn clear"
-            onClick={() =>
-              setFormData({ college: "", course: "", session: "" })
-            }
-          >
-            CLEAR
-          </button>
-        </div>
-      </form>
+      <div className="col-md-3">
+        <input
+          className="form-control"
+          placeholder="Semester"
+          type="number"
+          name="semester"
+          value={course.semester}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
 
-      {/* TABLE */}
-      <table className="data-table">
-        <thead>
-          <tr>
-            <th>Action</th>
-            <th>ID</th>
-            <th>College Name</th>
-            <th>Course Name</th>
-            <th>Session</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.id}>
-              <td>
-                <button
-                  className="edit-btn"
-                  onClick={() => handleEdit(row)}
-                >
-                  Edit
-                </button>
-              </td>
-              <td>{row.id}</td>
-              <td>{row.college}</td>
-              <td>{row.course}</td>
-              <td>{row.session}</td>
+    <div className="row mt-3">
+      <div className="col-md-6">
+        <textarea
+          className="form-control"
+          placeholder="Description"
+          name="description"
+          value={course.description}
+          onChange={handleChange}
+        />
+      </div>
+
+      <div className="col-md-3">
+        <input
+          className="form-control"
+          placeholder="Department Id"
+          type="number"
+          name="departmentId"
+          value={course.departmentId}
+          onChange={handleChange}
+        />
+      </div>
+    </div>
+
+    {/* ================= BUTTONS IN FOOTER ================= */}
+    <div className="card-footer d-flex gap-2 justify-content-end mt-3">
+
+      <button className="btn btn-secondary"
+        onClick={resetForm}>
+        {"Cancel"}
+      </button>
+      <button className="btn btn-success">
+        {isEdit ? "Update" : "Save"}
+      </button>
+
+      {isEdit && (
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={resetForm}
+        >
+          Cancel
+        </button>
+      )}
+    </div>
+  </form>
+</div>
+
+      {/* ================= TABLE CARD ================= */}
+      <div className="card p-3">
+        <table className="table table-bordered table-hover">
+          <thead className="table-dark">
+            <tr>
+              <th style={{ width: "50px" }}>SiNo</th>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Credits</th>
+              <th>Semester</th>
+              <th style={{ width: "80px" }}></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {Array.isArray(courseList) && courseList.length > 0 ? (
+              courseList.map((item, index) => (
+                <tr key={item.courseId}>
+                  <td>{index + 1}</td>
+                  <td>{item.courseCode}</td>
+                  <td>{item.courseName}</td>
+                  <td>{item.credits}</td>
+                  <td>{item.semester}</td>
+                  <td>
+                    <button
+                      className="btn btn-sm btn-primary"
+                      onClick={() => handleEdit(item)}
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="6" className="text-center">
+                  No courses found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
     </div>
   );
 };
 
-export default CourseSession;
+export default Courses;
