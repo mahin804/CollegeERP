@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import CollegeInfoModal from "./CollegeInfoModal/CollegeInfoModel";
 import { saveCollegeInfo } from '../Service.js/APIService';
 import "./Layout.css";
+import CommonHeader from "./CommonComponsnts/Header/CommonHeader";
 
 function Layout() {
   const [openCollegeModal, setOpenCollegeModal] = useState(false);
@@ -14,17 +15,22 @@ function Layout() {
       <Topbar onSettingsClick={() => setOpenCollegeModal(true)} />
 
       <div
+      
         style={{
-          height: "8rem",
+          height: "2.7rem",
           backgroundColor: "green",
           display: "flex",
           alignItems: "flex-end",
+          width:"100%",
+          marginTop: "3.7rem"
         }}
       >
-        <h1 style={{ paddingLeft: "5rem", paddingBottom: ".5rem" }}>
+        <h1 style={{ paddingLeft: "5rem", fontSize:"25px"}}>
           Dashboard
         </h1>
-      </div>
+      </div> 
+
+      {/* <CommonHeader title={"Dashboard"}/> */}
 
       <div className="layout">
         <Sidebar />
