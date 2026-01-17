@@ -14,7 +14,7 @@ function Layout() {
     <>
       <Topbar onSettingsClick={() => setOpenCollegeModal(true)} />
 
-      <div
+      {/* <div
       
         style={{
           height: "2.7rem",
@@ -28,9 +28,9 @@ function Layout() {
         <h1 style={{ paddingLeft: "5rem", fontSize:"25px"}}>
           Dashboard
         </h1>
-      </div> 
+      </div>  */}
 
-      {/* <CommonHeader title={"Dashboard"}/> */}
+      <CommonHeader title={"Dashboard"}/>
 
       <div className="layout">
         <Sidebar />
